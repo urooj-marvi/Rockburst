@@ -1,0 +1,346 @@
+{
+  "fold_results": [
+    {
+      "fold": 1,
+      "loss": 0.7796,
+      "accuracy": 80.83
+    },
+    {
+      "fold": 2,
+      "loss": 0.8013,
+      "accuracy": 82.67
+    },
+    {
+      "fold": 3,
+      "loss": 0.759,
+      "accuracy": 80.5
+    },
+    {
+      "fold": 4,
+      "loss": 0.7491,
+      "accuracy": 82.83
+    },
+    {
+      "fold": 5,
+      "loss": 0.7073,
+      "accuracy": 82.0
+    }
+  ],
+  "overall_metrics": {
+    "accuracy": 81.77,
+    "loss": 0.7593,
+    "std_accuracy": 0.95,
+    "std_loss": 0.0316,
+    "precision": 82.1,
+    "recall": 81.8,
+    "f1_score": 81.9
+  },
+  "class_distribution": [
+    {
+      "name": "Level 0 (Low)",
+      "value": 758,
+      "percentage": 25.3,
+      "color": "#4CAF50"
+    },
+    {
+      "name": "Level 1 (Medium)",
+      "value": 766,
+      "percentage": 25.5,
+      "color": "#FF9800"
+    },
+    {
+      "name": "Level 2 (High)",
+      "value": 729,
+      "percentage": 24.3,
+      "color": "#F44336"
+    },
+    {
+      "name": "Level 3 (Very High)",
+      "value": 747,
+      "percentage": 24.9,
+      "color": "#9C27B0"
+    }
+  ],
+  "feature_groups": [
+    {
+      "name": "Seismic Features",
+      "count": 20,
+      "color": "#2196F3"
+    },
+    {
+      "name": "Mechanical Features",
+      "count": 6,
+      "color": "#FF5722"
+    },
+    {
+      "name": "Geological Features",
+      "count": 37,
+      "color": "#4CAF50"
+    }
+  ],
+  "feature_correlations": [
+    {
+      "name": "signal_energy_mean_year",
+      "correlation": 0.89,
+      "group": "Seismic"
+    },
+    {
+      "name": "signal_energy_std_year",
+      "correlation": 0.87,
+      "group": "Seismic"
+    },
+    {
+      "name": "dominant_frequency_mean_year",
+      "correlation": 0.85,
+      "group": "Seismic"
+    },
+    {
+      "name": "axial_stress",
+      "correlation": 0.83,
+      "group": "Mechanical"
+    },
+    {
+      "name": "radial_stress",
+      "correlation": 0.81,
+      "group": "Mechanical"
+    },
+    {
+      "name": "elastic_strain_energy",
+      "correlation": 0.79,
+      "group": "Mechanical"
+    },
+    {
+      "name": "brittleness_ratio",
+      "correlation": 0.77,
+      "group": "Mechanical"
+    },
+    {
+      "name": "density",
+      "correlation": 0.75,
+      "group": "Mechanical"
+    }
+  ],
+  "removed_features": [
+    {
+      "name": "peak_ground_acceleration",
+      "correlation": 0.968,
+      "reason": "Too highly correlated"
+    },
+    {
+      "name": "tangential_stress",
+      "correlation": 0.968,
+      "reason": "Too highly correlated"
+    },
+    {
+      "name": "seismic_event_rate",
+      "correlation": 0.964,
+      "reason": "Too highly correlated"
+    },
+    {
+      "name": "depth",
+      "correlation": 0.962,
+      "reason": "Too highly correlated"
+    },
+    {
+      "name": "compressive_strength",
+      "correlation": 0.961,
+      "reason": "Too highly correlated"
+    },
+    {
+      "name": "signal_energy",
+      "correlation": 0.96,
+      "reason": "Too highly correlated"
+    },
+    {
+      "name": "signal_energy_norm",
+      "correlation": 0.96,
+      "reason": "Too highly correlated"
+    },
+    {
+      "name": "strain_rate",
+      "correlation": 0.953,
+      "reason": "Too highly correlated"
+    },
+    {
+      "name": "cumulative_seismic_energy",
+      "correlation": 0.95,
+      "reason": "Too highly correlated"
+    }
+  ],
+  "confusion_matrix": [
+    [
+      185,
+      12,
+      3,
+      0
+    ],
+    [
+      8,
+      178,
+      14,
+      0
+    ],
+    [
+      2,
+      10,
+      175,
+      13
+    ],
+    [
+      0,
+      1,
+      8,
+      188
+    ]
+  ],
+  "per_class_metrics": [
+    {
+      "class": "Level 0",
+      "precision": 94.9,
+      "recall": 92.5,
+      "f1": 93.7,
+      "support": 200
+    },
+    {
+      "class": "Level 1",
+      "precision": 88.6,
+      "recall": 89.0,
+      "f1": 88.8,
+      "support": 200
+    },
+    {
+      "class": "Level 2",
+      "precision": 87.5,
+      "recall": 87.5,
+      "f1": 87.5,
+      "support": 200
+    },
+    {
+      "class": "Level 3",
+      "precision": 93.5,
+      "recall": 94.0,
+      "f1": 93.7,
+      "support": 200
+    }
+  ],
+  "model_architecture": {
+    "seismic_branch": {
+      "name": "Seismic Branch",
+      "features": 20,
+      "layers": [
+        {
+          "type": "Dense",
+          "units": 16,
+          "activation": "ReLU"
+        },
+        {
+          "type": "BatchNorm",
+          "units": "-"
+        },
+        {
+          "type": "Dropout",
+          "rate": 0.6
+        },
+        {
+          "type": "Dense",
+          "units": 8,
+          "activation": "ReLU"
+        },
+        {
+          "type": "BatchNorm",
+          "units": "-"
+        },
+        {
+          "type": "Dropout",
+          "rate": 0.6
+        }
+      ],
+      "color": "#2196F3"
+    },
+    "mechanical_branch": {
+      "name": "Mechanical Branch",
+      "features": 6,
+      "layers": [
+        {
+          "type": "Dense",
+          "units": 8,
+          "activation": "ReLU"
+        },
+        {
+          "type": "BatchNorm",
+          "units": "-"
+        },
+        {
+          "type": "Dropout",
+          "rate": 0.6
+        }
+      ],
+      "color": "#FF5722"
+    },
+    "geological_branch": {
+      "name": "Geological Branch",
+      "features": 37,
+      "layers": [
+        {
+          "type": "Dense",
+          "units": 8,
+          "activation": "ReLU"
+        },
+        {
+          "type": "BatchNorm",
+          "units": "-"
+        },
+        {
+          "type": "Dropout",
+          "rate": 0.6
+        }
+      ],
+      "color": "#4CAF50"
+    },
+    "fusion_layer": {
+      "name": "Fusion Layer",
+      "layers": [
+        {
+          "type": "Concatenate",
+          "units": "-"
+        },
+        {
+          "type": "Dense",
+          "units": 8,
+          "activation": "ReLU"
+        },
+        {
+          "type": "BatchNorm",
+          "units": "-"
+        },
+        {
+          "type": "Dropout",
+          "rate": 0.7
+        },
+        {
+          "type": "Dense",
+          "units": 4,
+          "activation": "Softmax"
+        }
+      ],
+      "color": "#9C27B0"
+    }
+  },
+  "dataset_info": {
+    "total_samples": 3000,
+    "intensity_levels": 4,
+    "total_features": 63,
+    "feature_breakdown": {
+      "seismic": 20,
+      "mechanical": 6,
+      "geological": 37
+    },
+    "validation_method": "5-fold stratified cross-validation",
+    "feature_selection": "Removed 9 features with correlation > 0.9"
+  },
+  "export_info": {
+    "timestamp": "2025-08-14T20:06:45.039827",
+    "source": "Rockburst Intensity Prediction Model",
+    "version": "1.0.0"
+  }
+}
