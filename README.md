@@ -4,7 +4,7 @@ A comprehensive React-based web application for visualizing and predicting rockb
 
 ## 🌐 **Live Demo**
 
-**Production URL:** https://vercel.com/urooj-marvis-projects/rockburst-intensity-prediction
+**Production URL:**https://rockburst.vercel.app/
 
 ## 📊 **Features**
 
